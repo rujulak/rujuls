@@ -1,0 +1,61 @@
+public class currcon 
+{
+	public Double xvalue {get;set;}
+    public Double result {get;set;}
+    public string operation {get;set;}
+ 
+    public pagereference ui() {
+        result = xvalue* 82.80;
+        operation = 'USD TO INR';
+        return null;
+    }
+    public pagereference iu() {
+        result = xvalue/ 82.80;
+        operation = 'INR TO USD';
+        return null;
+    }
+   
+     public pagereference ei() {
+        result = xvalue* 89.35;
+        operation = 'EUR TO INR';
+        return null;
+     }
+    public pagereference ie() {
+        result = xvalue/ 89.35;
+        operation = 'INR TO EUR';
+        return null;
+    }
+}
+
+<apex:page controller="currcon" sidebar="false" >
+    <apex:form >
+        <apex:pageBlock title="Currency Converter">
+            <apex:pageBlockSection columns="1" title="Conversion Avaliable" collapsible="false">           
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel >Enter Amount </apex:outputLabel>
+                <apex:inputText value="{!xvalue}"/>                
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel >Conversion: </apex:outputLabel>
+                <apex:inputText value="{!result}"/>    
+            </apex:pageBlockSectionItem>
+             <apex:pageBlockSectionItem >
+                    <apex:outputLabel > You have performed {!operation} on {!xvalue}.
+                    </apex:outputLabel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:commandButton value="USD TO INR" action="{!ui}"/> 
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:commandButton value="INR TO USD" action="{!iu}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:commandButton value="EUR TO INR" action="{!ei}"/> 
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:commandButton value="INR TO EUR" action="{!ie}"/> 
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+       </apex:pageBlock>
+    </apex:form>   
+</apex:page>
